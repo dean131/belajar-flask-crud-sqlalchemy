@@ -1,3 +1,4 @@
+from distutils.log import debug
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from config import Config
@@ -16,3 +17,6 @@ db = SQLAlchemy(app)
 
 from app import routes
 from app.models import users
+
+if __name__ == "__main__":
+    app.run(debug=True)
