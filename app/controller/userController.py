@@ -15,17 +15,16 @@ def tampilUser(id):
         user = Users.query.filter_by(id=id).first()
         if not user:
             return response.badRequest("","User tidak ditemukan")
-        for i in user:
-            data = {
-                "id" : i.id,
-                "nama" : i.nama,
-                "email" : i.email,
-                "password" : i.password,
-                "alamat" : i.alamat,
-                "j_kelamin" : i.j_kelamin,
-                "no_telp" : i.no_telp,
-                "dibuat" : i.dibuat
-            }
+        data = {
+            "id" : user.id,
+            "nama" : user.nama,
+            "email" : user.email,
+            "password" : user.password,
+            "alamat" : user.alamat,
+            "j_kelamin" : user.j_kelamin,
+            "no_telp" : user.no_telp,
+            "dibuat" : user.dibuat
+        }
         return response.ok(data, "User barhasil ditemukan")
     except Exception as e:
         print(e)
