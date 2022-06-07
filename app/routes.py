@@ -14,6 +14,6 @@ def userDetail(id):
     if request.method == "GET":
         return userController.tampilUser(id)
     elif request.method == "PUT":
-        return "belum buat fungsi"
+        return userController.updateUser(id)
     elif request.method == "DELETE":
         return userController.hapusUser(id)

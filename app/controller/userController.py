@@ -66,6 +66,21 @@ def tambahUser():
     except Exception as e:
         print(e)
 
+def updateUser(id):
+    try:
+        user = Users.query.filter_by(id=id).first()
+        if not user:
+            return response.badRequest("", "User tidak ditemukan")
+        user.nama = request.json["nama"]
+        user.email = request.json["email"]
+        user.password = request.json["password"]
+        user.alamat = request.json["alamat"]
+        user.j_kelamin = request.json["j_kelamin"]
+        user.no_telp = request.json["no_telp"]
+        return response.ok("", "Berhasil mengupdate")
+    except Exception as e:
+        print(e)
+
 def hapusUser(id):
     try:
         user = Users.query.filter_by(id=id).first()
