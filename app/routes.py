@@ -8,3 +8,12 @@ def users():
         return userController.tampilUsers()
     else:
         return userController.tambahUser()
+
+@app.route("/users/<id>", methods=["GET", "PUT", "DELETE"])
+def userDetail(id):
+    if request.method == "GET":
+        return "belum buat fungsi"
+    elif request.method == "PUT":
+        return "belum buat fungsi"
+    elif request.method == "DELETE":
+        return userController.hapusUser(id)

@@ -46,3 +46,14 @@ def tambahUser():
         return response.ok('', "Berhasil menambah data")
     except Exception as e:
         print(e)
+        
+def hapusUser(id):
+    try:
+        user = Users.query.filter_by(id=id).first()
+        if not user:
+            return response.badRequest([], "User tidak ditemukan")
+        db.session.delete(user)
+        db.session.commit()
+        return response.ok('', "Behasil menghapus user")
+    except Exception as e:
+        print(e)
