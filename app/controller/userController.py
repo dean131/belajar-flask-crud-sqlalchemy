@@ -10,6 +10,26 @@ def tampilUsers():
     except Exception as e:
         print(e)
 
+def tampilUser(id):
+    try:
+        user = Users.query.filter_by(id=id).first()
+        if not user:
+            return response.badRequest("","User tidak ditemukan")
+        for i in user:
+            data = {
+                "id" : i.id,
+                "nama" : i.nama,
+                "email" : i.email,
+                "password" : i.password,
+                "alamat" : i.alamat,
+                "j_kelamin" : i.j_kelamin,
+                "no_telp" : i.no_telp,
+                "dibuat" : i.dibuat
+            }
+        return response.ok(data, "User barhasil ditemukan")
+    except Exception as e:
+        print(e)
+
 def ubahKeArray(users):
     arrayUsers = []
     for user in users:
@@ -46,12 +66,12 @@ def tambahUser():
         return response.ok('', "Berhasil menambah data")
     except Exception as e:
         print(e)
-        
+
 def hapusUser(id):
     try:
         user = Users.query.filter_by(id=id).first()
         if not user:
-            return response.badRequest([], "User tidak ditemukan")
+            return response.badRequest("", "User tidak ditemukan")
         db.session.delete(user)
         db.session.commit()
         return response.ok('', "Behasil menghapus user")

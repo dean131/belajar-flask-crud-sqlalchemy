@@ -12,7 +12,7 @@ def users():
 @app.route("/users/<id>", methods=["GET", "PUT", "DELETE"])
 def userDetail(id):
     if request.method == "GET":
-        return "belum buat fungsi"
+        return userController.tampilUser(id)
     elif request.method == "PUT":
         return "belum buat fungsi"
     elif request.method == "DELETE":
