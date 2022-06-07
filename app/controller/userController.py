@@ -77,6 +77,7 @@ def updateUser(id):
         user.alamat = request.json["alamat"]
         user.j_kelamin = request.json["j_kelamin"]
         user.no_telp = request.json["no_telp"]
+        db.session.commit()
         return response.ok("", "Berhasil mengupdate")
     except Exception as e:
         print(e)
