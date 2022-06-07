@@ -1,7 +1,3 @@
-from email.policy import default
-from msilib.schema import Class
-
-from sqlalchemy import Column
 from app import db
 from datetime import datetime
 
