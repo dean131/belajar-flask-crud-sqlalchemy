@@ -46,12 +46,12 @@ def ubahKeArray(users):
 
 def tambahUser():
     try:
-        dnama = request.json["nama"]
-        demail = request.json["email"]
-        dpassword = request.json["password"]
-        dalamat = request.json["alamat"]
-        dj_kelamin = request.json["j_kelamin"]
-        dno_telp = request.json["no_telp"]
+        dnama = request.form["nama"]
+        demail = request.form["email"]
+        dpassword = request.form["password"]
+        dalamat = request.form["alamat"]
+        dj_kelamin = request.form["j_kelamin"]
+        dno_telp = request.form["no_telp"]
         user = Users(
             nama = dnama, 
             email = demail, 
