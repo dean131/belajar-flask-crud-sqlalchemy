@@ -17,3 +17,10 @@ def userDetail(id):
         return userController.updateUser(id)
     elif request.method == "DELETE":
         return userController.hapusUser(id)
+
+@app.route('/login')
+def login():
+    email = request.args.get('email')
+    password = request.args.get('password')
+
+    return f'email= {email}\npassword= {password}'
