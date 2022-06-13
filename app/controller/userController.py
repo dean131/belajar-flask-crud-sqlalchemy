@@ -100,6 +100,8 @@ def validasiLogin(inp_email, inp_pass):
 
         if not user:
             return response.badRequest('', 'user tidak ditemukan')
+
+        print(user)
         data = {
             'email' : inp_email,
             'password' : inp_pass
