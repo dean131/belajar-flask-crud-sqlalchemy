@@ -18,9 +18,9 @@ def userDetail(id):
     elif request.method == "DELETE":
         return userController.hapusUser(id)
 
-@app.route('/login')
+@app.route('/login', methods=['GET'])
 def login():
     email = request.args.get('email')
     password = request.args.get('password')
 
-    return f'email= {email}\npassword= {password}'
+    return userController.validasiLogin(email, password)
