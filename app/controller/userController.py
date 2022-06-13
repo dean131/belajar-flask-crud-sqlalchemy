@@ -95,7 +95,9 @@ def hapusUser(id):
 
 def validasiLogin(inp_email, inp_pass):
     try:
-        user = Users.query.filter_by(email=inp_email, password=inp_pass)
+
+        user = (Users.query.filter(Users.email==inp_email).filter(Users.password==inp_pass))
+
         if not user:
             return response.badRequest('', 'user tidak ditemukan')
         data = {
