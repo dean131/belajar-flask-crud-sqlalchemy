@@ -93,19 +93,23 @@ def hapusUser(id):
     except Exception as e:
         print(e)
 
-def validasiLogin(inp_email, inp_pass):
-    try:
-
-        user = (Users.query.filter(Users.email==inp_email).filter(Users.password==inp_pass))
-
+def authLogin(inp_email, inp_pass):
+    try :
+        user = Users.query.filter_by(email=inp_email).first()
         if not user:
-            return response.badRequest('', 'user tidak ditemukan')
-
-        print(user)
-        data = {
-            'email' : inp_email,
-            'password' : inp_pass
-        }
-        return response.ok(data, 'login valid')
+            return response.badRequest('', 'Login tidak valid')
+        if user.email == inp_email and user.password == inp_pass:
+            data = {
+                "id" : user.id,
+                "nama" : user.nama,
+                "email" : user.email,
+                "password" : user.password,
+                "alamat" : user.alamat,
+                "j_kelamin" : user.j_kelamin,
+                "no_telp" : user.no_telp,
+                "dibuat" : user.dibuat
+            }
+            return response.ok(data,'Login valid')
+        return response.badRequest('', 'Login tidak valid')
     except Exception as e:
         print(e)

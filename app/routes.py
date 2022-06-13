@@ -1,4 +1,4 @@
-from app import app
+from app import app, response
 from flask import request
 from app.controller import userController
 
@@ -19,8 +19,12 @@ def userDetail(id):
         return userController.hapusUser(id)
 
 @app.route('/login', methods=['GET'])
-def login():
-    email = request.args.get('email')
-    password = request.args.get('password')
+def loginUser():
 
-    return userController.validasiLogin(email, password)
+    if request.method == "GET":
+        inp_email = request.args.get('email')
+        inp_pass = request.args.get('password')
+        return userController.authLogin(inp_email, inp_pass)
+    else:
+        return response.badRequest('', 'url tidak valid')
+
